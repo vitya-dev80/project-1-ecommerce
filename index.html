@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechStore — E-Commerce Portfolio</title>
+  <script type="module" crossorigin src="/project-1-ecommerce/assets/index-zVBy2Xsq.js"></script>
+  <link rel="stylesheet" crossorigin href="/project-1-ecommerce/assets/index-BJ750FnE.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <h1 class="logo">TechStore</h1>
+      <button id="cart-btn" class="cart-btn">
+        🛒 Кошик (<span id="cart-count">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Секція пошуку та фільтрації -->
+    <section class="controls">
+      <input type="text" id="search-input" placeholder="Пошук товарів..." />
+      <select id="category-select">
+        <option value="all">Усі категорії</option>
+        <option value="audio">Аудіо</option>
+        <option value="peripherals">Периферія</option>
+        <option value="monitors">Монітори</option>
+      </select>
+    </section>
+
+    <h2>Каталог товарів</h2>
+    <div id="product-grid" class="product-grid"></div>
+  </main>
+
+  <!-- Модальне вікно кошика -->
+  <div id="cart-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Ваш кошик</h2>
+        <button id="close-modal" class="close-btn">&times;</button>
+      </div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="modal-footer">
+        <div class="total-price">Разом: <span id="total-sum">0</span> грн</div>
+        <button id="checkout-btn" class="checkout-btn">Оформити замовлення</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

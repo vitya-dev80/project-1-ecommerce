@@ -1,0 +1,15 @@
+(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})(),((e,t)=>()=>(t||(e((t={exports:{}}).exports,t),e=null),t.exports))((()=>{var e=[{id:1,name:`Бездротові навушники`,price:2999,category:`audio`},{id:2,name:`Механічна клавіатура`,price:4200,category:`peripherals`},{id:3,name:`Ігрова миша`,price:1800,category:`peripherals`},{id:4,name:`4K Монітор`,price:12500,category:`monitors`},{id:5,name:`Студійний мікрофон`,price:3500,category:`audio`}],t=JSON.parse(localStorage.getItem(`techstore_cart`))||[],n=document.getElementById(`product-grid`),r=document.getElementById(`search-input`),i=document.getElementById(`category-select`),a=document.getElementById(`cart-btn`),o=document.getElementById(`cart-modal`),s=document.getElementById(`close-modal`),c=document.getElementById(`cart-items`),l=document.getElementById(`total-sum`),u=document.getElementById(`cart-count`),d=document.getElementById(`checkout-btn`);function f(){localStorage.setItem(`techstore_cart`,JSON.stringify(t)),p()}function p(){let e=t.reduce((e,t)=>e+t.quantity,0),n=t.reduce((e,t)=>e+t.price*t.quantity,0);u.innerText=e,l.innerText=n,c.innerHTML=t.length===0?`<p>Кошик порожній</p>`:t.map(e=>`
+        <div class="cart-item">
+          <div>
+            <strong>${e.name}</strong><br>
+            <small>${e.price} грн × ${e.quantity}</small>
+          </div>
+          <button class="remove-btn" onclick="removeFromCart(${e.id})">Видалити</button>
+        </div>
+      `).join(``)}function m(){let t=r.value.toLowerCase(),a=i.value,o=e.filter(e=>{let n=e.name.toLowerCase().includes(t),r=a===`all`||e.category===a;return n&&r});n.innerHTML=o.length===0?`<p>Товарів не знайдено</p>`:o.map(e=>`
+        <div class="product-card">
+          <h3>${e.name}</h3>
+          <p>Ціна: <strong>${e.price} грн</strong></p>
+          <button onclick="addToCart(${e.id})">Додати в кошик</button>
+        </div>
+      `).join(``)}window.addToCart=function(n){let r=e.find(e=>e.id===n),i=t.find(e=>e.id===n);i?i.quantity++:t.push({...r,quantity:1}),f()},window.removeFromCart=function(e){t=t.filter(t=>t.id!==e),f()},a.addEventListener(`click`,()=>o.classList.remove(`hidden`)),s.addEventListener(`click`,()=>o.classList.add(`hidden`)),d.addEventListener(`click`,()=>{if(t.length===0)return alert(`Кошик порожній!`);alert(`Дякуємо за замовлення!`),t=[],f(),o.classList.add(`hidden`)}),r.addEventListener(`input`,m),i.addEventListener(`change`,m),m(),p()}))();
